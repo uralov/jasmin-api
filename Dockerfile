@@ -17,8 +17,5 @@ RUN chown -R ${USER_NAME}:${USER_GROUP} ${HOME_DIR}
 WORKDIR ${HOME_DIR}
 USER ${USER_NAME}
 
-RUN ./manage.py migrate && \
-    echo 'yes' | ./manage.py collectstatic
-
 EXPOSE 8001
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8001"]

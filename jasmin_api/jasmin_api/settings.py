@@ -128,8 +128,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #Simplify config to show/hide Swagger docs
 SHOW_SWAGGER = True
 
-with open(os.path.join(SETTINGS_DIR, 'local_settings.py')) as f:
-    exec(f.read())
+try:
+    from .local_settings import *
+except ImportError:
+    pass
 
 if SHOW_SWAGGER:
     INSTALLED_APPS += ('rest_framework_swagger',)
