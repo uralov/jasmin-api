@@ -5,6 +5,8 @@ ENV PYTHONUNBUFFERED=1 \
     USER_NAME=jasmin-api \
     USER_GROUP=www-data
 
+RUN apt-get update && apt-get install -y --no-install-recommends telnet
+
 COPY requirements.txt /
 RUN pip install --no-cache-dir -r /requirements.txt && \
     rm /requirements.txt && \
